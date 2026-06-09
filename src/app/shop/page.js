@@ -1,11 +1,11 @@
 "use client";
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useSearchParams, useRouter } from 'next/navigation';
 import WishlistButton from '@/components/WishlistButton';
 
-export default function ShopPage() {
+function ShopContent() {
     const searchParams = useSearchParams();
     const router = useRouter();
 
@@ -309,5 +309,12 @@ export default function ShopPage() {
                 </div>
             </div>
         </div>
+    );
+}
+export default function ShopPage() {
+    return (
+        <Suspense fallback={<div className="min-h-screen flex items-center justify-center text-sm font-bold uppercase tracking-widest animate-pulse">Loading Shop...</div>}>
+            <ShopContent />
+        </Suspense>
     );
 }
