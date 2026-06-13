@@ -1,7 +1,6 @@
 import Link from 'next/link';
 
 export default function BrandShowcase() {
-    // Danh sách Brand (Bạn thay link ảnh bằng link thật trên Cloudinary của bạn)
     const brands = [
         {
             id: 1,
@@ -68,8 +67,15 @@ export default function BrandShowcase() {
                             style={{ backgroundImage: `url(${brand.bgImage})` }}
                         ></div>
                         <div className="absolute inset-0 bg-black/50 group-hover:bg-black/30 transition-colors"></div>
-                        <div className="absolute inset-0 flex flex-col items-center justify-center p-6">
-                            <img src={brand.logo} alt={brand.name} className="w-26 group-hover:opacity-100 transition-opacity" />
+                        <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-white text-center">
+                            <img
+                                src={brand.logo}
+                                alt={brand.name}
+                                className="w-26 object-contain group-hover:opacity-100 transition-opacity mb-3"
+                            />
+                            <span className="text-lg font-semibold tracking-wide drop-shadow-md">
+                                {brand.name}
+                            </span>
                         </div>
                     </Link>
                 ))}
